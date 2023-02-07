@@ -9,7 +9,6 @@ pipeline {
         Hello = "World"
     }
     stages {
-        
         stage('Completed') {
             steps {
                 echo "Deployment Name: ${params.deployname}"
