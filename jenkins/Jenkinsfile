@@ -1,18 +1,22 @@
 pipeline {
     agent any
     parameters {
-        booleanParam(defaultValue: true, description: "Should Enable service: ", name:"myBoolean")
-        string(defaultValue: "Test", description: "Selected Profile", name: "env")
-        choice(choices:['prod', 'test', 'dev', 'local'], description: 'select a profile', name: "choices")
+        booleanParam(defaultValue: false, description: "Confrim Deployment: ", name:"confirmDeployment")
+        string(defaultValue: "Test", description: "Deployment Name", name: "deployname")
+        choice(choices:['EU-WEST-2A', 'EU-WEST-2B', 'EU-WEST-2C', 'local'], description: 'select a region', name: "choices")
+    }
+    enviroment {
+        Hello = "World"
     }
     stages {
         
         stage('Completed') {
             steps {
-                echo "Parameters Build Job: ${params.myBoolean}"
-                echo "Deployment done in : ${params.choices}"
-
-            }
+                echo "Deployment Name: ${params.deployname}"
+                echo "Confirm deployment: ${params.confirmDeployment}"
+                echo "Deployment done in region: ${params.choices}"
+                echo "Printing Hello $Hello"
+            }   
         }
     }
 }
