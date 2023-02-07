@@ -5,7 +5,7 @@ pipeline {
         string(defaultValue: "Test", description: "Deployment Name", name: "deployname")
         choice(choices:['EU-WEST-2A', 'EU-WEST-2B', 'EU-WEST-2C', 'local'], description: 'select a region', name: "choices")
     }
-    enviroment {
+    environment {
         Hello = "World"
     }
     stages {
