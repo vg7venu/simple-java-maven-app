@@ -2,12 +2,14 @@ pipeline {
     agent any
     parameters {
         booleanParam(defaultValue: true, description: "Should Enable service: ", name:"myBoolean")
+        string(defaultValue: "Test", description: "Selected Profile", name: "env")
     }
     stages {
         
         stage('Completed') {
             steps {
                 echo "Parameters Build Job: ${params.myBoolean}"
+                echo "Deployment done in : ${params.env}"
             }
         }
     }
