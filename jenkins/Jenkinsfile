@@ -3,13 +3,15 @@ pipeline {
     parameters {
         booleanParam(defaultValue: true, description: "Should Enable service: ", name:"myBoolean")
         string(defaultValue: "Test", description: "Selected Profile", name: "env")
+        choice(choices['prod', 'test', 'dev', 'local'], description: 'select a profile', name: "choices")
     }
     stages {
         
         stage('Completed') {
             steps {
                 echo "Parameters Build Job: ${params.myBoolean}"
-                echo "Deployment done in : ${params.env}"
+                echo "Deployment done in : ${params.choices}"
+
             }
         }
     }
