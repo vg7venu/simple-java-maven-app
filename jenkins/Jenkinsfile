@@ -3,7 +3,7 @@ pipeline {
     parameters {
         booleanParam(defaultValue: true, description: "Should Enable service: ", name:"myBoolean")
         string(defaultValue: "Test", description: "Selected Profile", name: "env")
-        choice(choices['prod', 'test', 'dev', 'local'], description: 'select a profile', name: "choices")
+        choice(choices:['prod', 'test', 'dev', 'local'], description: 'select a profile', name: "choices")
     }
     stages {
         
