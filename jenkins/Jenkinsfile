@@ -12,9 +12,16 @@ pipeline {
         stage('Completed') {
             steps {
                 echo "Deployment Name: ${params.deployname}"
-                echo "Confirm deployment: ${params.confirmDeployment}"
                 echo "Deployment done in region: ${params.choices}"
                 echo "Printing Hello $Hello"
+                script{
+                    if(params.confirmDeployment == true) {
+                        currentBuild.result = "SUCCESS"
+                        return
+                    } else {
+                        echo "Confirm deployment: ${params.confirmDeployment}"
+                    }
+                }
             }   
         }
     }
